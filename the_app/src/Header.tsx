@@ -3,15 +3,26 @@ import Icon_menu from './assets/icon-menu.svg';
 import Icon_document from './assets/icon-document.svg';
 import Icon_delete from './assets/icon-delete.svg';
 import Icon_save from './assets/icon-save.svg';
-import { HeaderDiv, MenuIcon, MarkP, VertLine, DocumentName, DocNForm, Label, Input, DelSave, SaveButton, DelButton } from './HeaderStyles';
+import Icon_close from './assets/icon-close.svg';
+import Markdown from './assets/MARKDOWN.svg';
+import { HeaderDiv, MenuButton, MarkP, VertLine, DocumentName, DocNForm, Label, Input, DelSave, SaveButton, DelButton } from './HeaderStyles';
 
-export default function Header() {
+interface HeaderProps {
+  isSidebarVisible: boolean;
+  toggleSidebar: () => void;
+}
+
+export default function Header({ isSidebarVisible, toggleSidebar }: HeaderProps) {
   return (
-    <HeaderDiv>
-      <MenuIcon>
-        <img src={ Icon_menu } alt="menu icon" />
-      </MenuIcon>
-      <MarkP>MARKDOWN</MarkP>
+    <HeaderDiv sidebarvisible={isSidebarVisible}>
+      <MenuButton onClick={toggleSidebar}>
+        { isSidebarVisible ?
+          <img src={ Icon_close } alt="menu icon" />
+        :
+          <img src={ Icon_menu } alt="close icon" />
+        }
+      </MenuButton>
+      <MarkP><img src={ Markdown } /></MarkP>
       <VertLine />
       <DocumentName>
         <img src={ Icon_document } alt="document icon" />

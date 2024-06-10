@@ -1,23 +1,27 @@
 import styled from 'styled-components';
 
-const HeaderDiv = styled.div`
+const HeaderDiv = styled.div<{ sidebarvisible: boolean }>`
   background: #2B2D31;
   height: 72px;
-  width: 100%;
+  margin-left: auto;
+  width: ${({ sidebarvisible }) => (sidebarvisible ? 'calc(100% - 250px)' : '100%')};
+  transition: width 0.3s ease-in-out;
   display: flex;
   align-items: center;
 `;
 
-const MenuIcon = styled.div`
+const MenuButton = styled.button`
   background: #35393F;
+  border: none;
   height: 72px;
   width: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 
-const MarkP = styled.p`
+const MarkP = styled.div`
   color: #ffffff;
   margin: 0 24.75px 0 24.75px;
 `;
@@ -51,7 +55,7 @@ const DocNForm = styled.form`
 const Label = styled.label`
   color: #7C8187;
   font-size: 13px;
-  font-weight: 450;
+  font-weight: 300;
 `;
 
 const Input = styled.input`
@@ -59,6 +63,7 @@ const Input = styled.input`
   background: transparent;
   color: #ffffff;
   font-size: 15px;
+  font-weight: 400;
   caret-color: #E46643;
   &:hover,
   &:focus {
@@ -109,4 +114,4 @@ const SaveButton = styled.button`
 `;
 
 
-export { HeaderDiv, MenuIcon, MarkP, VertLine, DocumentName, DocNForm, Label, Input, DelSave, SaveButton, DelButton };
+export { HeaderDiv, MenuButton, MarkP, VertLine, DocumentName, DocNForm, Label, Input, DelSave, SaveButton, DelButton };
