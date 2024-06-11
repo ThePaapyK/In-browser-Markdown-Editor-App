@@ -53,6 +53,7 @@ const DocNForm = styled.form`
 
 
 const Label = styled.label`
+  font-family: 'Roboto', sans-serif;
   color: #7C8187;
   font-size: 13px;
   font-weight: 300;
@@ -63,6 +64,7 @@ const Input = styled.input`
   background: transparent;
   color: #ffffff;
   font-size: 15px;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   caret-color: #E46643;
   &:hover,
@@ -97,6 +99,8 @@ const SaveButton = styled.button`
   align-items: center;
   gap: 7px;
   border-radius: 5px;
+  font-family: 'Roboto'; sans-serif;
+  font-weight: 400;
   height: 40px;
   width: 152px;
   cursor: pointer;
