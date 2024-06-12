@@ -4,6 +4,7 @@ import './App.css';
 import { GlobalStyles } from './GlobalStyles';
 import Header from './Header';
 import SideBar from './SideBar';
+import MainContent from './MainContent';
 
 function App() {
    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
@@ -18,6 +19,7 @@ function App() {
       <div className="App">
         <SideBar isSidebarVisible={isSidebarVisible} />
         <Header isSidebarVisible={isSidebarVisible} toggleSidebar={toggleSidebar} />
+        <MainContent isSidebarVisible={ isSidebarVisible } />
       </div>
     </>
   );

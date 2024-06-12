@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const HeaderDiv = styled.div<{ sidebarvisible: boolean }>`
   background: #2B2D31;
   height: 72px;
+  z-index: 1000;
   margin-left: auto;
   width: ${({ sidebarvisible }) => (sidebarvisible ? 'calc(100% - 250px)' : '100%')};
   transition: width 0.3s ease-in-out;
