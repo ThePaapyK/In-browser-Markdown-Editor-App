@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { GlobalStyles } from './GlobalStyles';
@@ -13,13 +13,19 @@ function App() {
     setIsSidebarVisible(!isSidebarVisible);
   };
 
+ const [isChecked, setIsChecked] = useState(false);
+
+  const handleToggle = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <>
       <GlobalStyles />
       <div className="App">
-        <SideBar isSidebarVisible={isSidebarVisible} />
+        <SideBar isSidebarVisible={isSidebarVisible} isChecked={ isChecked } handleToggle={ handleToggle }  />
         <Header isSidebarVisible={isSidebarVisible} toggleSidebar={toggleSidebar} />
-        <MainContent isSidebarVisible={ isSidebarVisible } />
+        <MainContent isSidebarVisible={ isSidebarVisible } isChecked={ isChecked } />
       </div>
     </>
   );

@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
+interface MainStylesProps {
+  sidebarVisible: boolean;
+  ischecked: boolean;
+}
 
-const MainBodyDiv = styled.div<{ sidebarVisible: boolean }>`
+const MainBodyDiv = styled.div<MainStylesProps>`
  margin-left: ${({ sidebarVisible }) => (sidebarVisible ? '250px' : '0')};
  transition: margin-left 0.3s ease-in-out;
  width: 100%;
@@ -9,59 +13,59 @@ const MainBodyDiv = styled.div<{ sidebarVisible: boolean }>`
  position: relative;
  min-height: calc( 100vh - 70px);
  text-align: left;
+ background-color: ${({ ischecked }) => (ischecked ? '#151619' : '#FFFFFF')};
 `;
 
-const MarkdownDiv = styled.div`
+const MarkdownDiv = styled.div<{ispreview: boolean}>`
   text-align: left;
   vertical-align: top;
-  display: inline-block;
+  display: ${({ispreview}) => (ispreview ? 'none' : 'inline-block')};
   width: 50%;
   min-height: calc( 100vh - 70px);
   margin-right: auto;
- 
-  .topbar {
-    height: 42px;
-    width: 100%;
-    display: inline-block;
-    background-color: #F5F5F5;
-    color: #7C8187;
-    padding: 13px 0 0 15px;
-
-     p {
-      margin: 0;
-      font-size: 14px;
-    }
-  }
 `;
 
-const Vertline = styled.div`
+const TopBarDiv = styled.div<{ischecked: boolean}>`
+    height: 42px;
+    width: 100%;
+    background-color: ${({ ischecked }) => (ischecked ? '#1D1F22' : '#F5F5F5')};
+    color: #7C8187;
+    display: inline-block;
+    padding:13px 0 0 15px;
+    overflow: hidden;
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      float: left;
+    }
+`;
+
+const Vertline = styled.div<{ ischecked: boolean, ispreview: boolean}>`
   border: none;
-  border-left: 2px solid #E4E4E4;
-  display: inline-block;
+  border-left: ${({ ischecked }) => (ischecked ? '2px solid #5A6069' : '2px solid #E4E4E4')};
+  display: ${prop => prop.ispreview ? 'none' : 'inline-block'};
   min-height: calc( 100vh - 70px);
   margin-left: auto;
 `;
 
-const PreviewDiv = styled.div`
+const PreviewDiv = styled.div<{ispreview: boolean}>`
  text-align: left;
  display: inline-block;
  min-height: calc( 100vh - 70px);
  vertical-align: top;
- width: calc(50% - 2px);
-
- .topbar {
-    height: 42px;
-    width: 100%;
-    background-color: #F5F5F5;
-    color: #7C8187;
-    display: inline-block;
-    padding:13px 0 0 15px;
-   
-    p {
-      margin: 0;
-      font-size: 14px;
-    }
-  }
+ width: ${({ispreview}) => (ispreview ? '100%' : 'calc(50% - 2px)')};
 `;
 
-export { MainBodyDiv, MarkdownDiv, PreviewDiv, Vertline };
+const PreviewButton = styled.button`
+  float: right;
+  border: none;
+  margin-right: 20px;
+  background: transparent;
+  height: 16px;
+  cursor: pointer;
+  
+`;
+
+
+export { MainBodyDiv, MarkdownDiv, PreviewDiv, TopBarDiv, Vertline, PreviewButton };

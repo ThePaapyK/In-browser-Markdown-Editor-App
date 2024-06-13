@@ -6,16 +6,12 @@ import Icon_light from './assets/icon-light-mode.svg';
 
 interface SidebarProps {
   isSidebarVisible: boolean;
+  isChecked: boolean;
+  handleToggle: () => void;
 }
 
-export default function SideBar({ isSidebarVisible }: SidebarProps) {
+export default function SideBar({ isSidebarVisible, isChecked, handleToggle }: SidebarProps) {
  
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleToggle = () => {
-    setIsChecked(!isChecked);
-  };
-
   return (
     <SideBarDiv isvisible={isSidebarVisible}>
       <TitleDiv>
