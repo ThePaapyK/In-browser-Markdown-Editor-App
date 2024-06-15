@@ -13,6 +13,7 @@ const SideBarDiv = styled.div<{ isvisible: boolean }>`
   color:#ffffff;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 `;
 
 

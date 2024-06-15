@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 const HeaderDiv = styled.div<{ sidebarvisible: boolean }>`
   background: #2B2D31;
-  height: 72px;
-  z-index: 1000;
-  margin-left: auto;
-  width: ${({ sidebarvisible }) => (sidebarvisible ? 'calc(100% - 250px)' : '100%')};
-  transition: width 0.3s ease-in-out;
   display: flex;
   align-items: center;
+  height: 72px;
+  z-index: 1000;
+  margin-left: ${({ sidebarvisible }) => (sidebarvisible ? '250px' : '0')};
+  transition: margin-left 0.3s ease-in-out;
+  width: 100%;
+  overflow: hidden;
 `;
 
 const MenuButton = styled.button`
@@ -17,8 +18,8 @@ const MenuButton = styled.button`
   height: 72px;
   width: 72px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
 `;
 
@@ -34,11 +35,10 @@ const VertLine = styled.div`
 
 const DocumentName = styled.div`
   display: flex;
+  align-items: center;
   padding-left: 25px;
   height: 36px;
   width: 128px;
-  display: flex;
-  align-items: center;
   gap: 14px;
   img {
     height: 16px;

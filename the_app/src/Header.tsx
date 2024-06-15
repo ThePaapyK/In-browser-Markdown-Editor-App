@@ -10,9 +10,10 @@ import { HeaderDiv, MenuButton, MarkP, VertLine, DocumentName, DocNForm, Label, 
 interface HeaderProps {
   isSidebarVisible: boolean;
   toggleSidebar: () => void;
+  handleDeleteClick: () => void;
 }
 
-export default function Header({ isSidebarVisible, toggleSidebar }: HeaderProps) {
+export default function Header({ isSidebarVisible, toggleSidebar, handleDeleteClick }: HeaderProps) {
   return (
     <HeaderDiv sidebarvisible={isSidebarVisible}>
       <MenuButton onClick={toggleSidebar}>
@@ -35,7 +36,7 @@ export default function Header({ isSidebarVisible, toggleSidebar }: HeaderProps)
         </DocNForm>
       </DocumentName>
       <DelSave>
-        <DelButton>
+        <DelButton onClick={handleDeleteClick} >
           <img src={ Icon_delete } alt="delete icon" />
         </DelButton>
         <SaveButton>

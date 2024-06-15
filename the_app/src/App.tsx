@@ -5,6 +5,7 @@ import { GlobalStyles } from './GlobalStyles';
 import Header from './Header';
 import SideBar from './SideBar';
 import MainContent from './MainContent';
+import DialogBox from './DialogBox';
 
 function App() {
    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
@@ -19,12 +20,26 @@ function App() {
     setIsChecked(!isChecked);
   };
 
+  const [isDialogVisible, setIsDialogVisible] = useState(false);
+
+  const handleDeleteClick = () => {
+    setIsDialogVisible(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsDialogVisible(false);
+  };
+
   return (
     <>
       <GlobalStyles />
       <div className="App">
-        <SideBar isSidebarVisible={isSidebarVisible} isChecked={ isChecked } handleToggle={ handleToggle }  />
-        <Header isSidebarVisible={isSidebarVisible} toggleSidebar={toggleSidebar} />
+        <SideBar isSidebarVisible={isSidebarVisible}
+          isChecked={ isChecked } handleToggle={ handleToggle }  />
+        {isDialogVisible && <DialogBox isChecked={isChecked} onClose={handleCloseDialog} />}
+        <Header isSidebarVisible={isSidebarVisible} 
+         toggleSidebar={toggleSidebar}
+         handleDeleteClick={handleDeleteClick} />
         <MainContent isSidebarVisible={ isSidebarVisible } isChecked={ isChecked } />
       </div>
     </>
