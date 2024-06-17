@@ -21,6 +21,13 @@ export default function MainContent({ isSidebarVisible, isChecked } : MainProps)
       <MarkdownDiv ispreview={isPreview}>
         <TopBarDiv ischecked={isChecked}>
           <p>MARKDOWN</p>
+          <PreviewButton onClick={togglePreview}>
+            { isPreview ?
+            <img src={Icon_hide} alt="hide preview icon" />
+            :
+            <img src={Icon_show} alt="show preview icon" />
+            }
+          </PreviewButton>
         </TopBarDiv>
       </MarkdownDiv>
       <Vertline ischecked={isChecked} ispreview={isPreview} />

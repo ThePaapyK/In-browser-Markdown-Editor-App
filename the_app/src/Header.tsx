@@ -41,7 +41,7 @@ export default function Header({ isSidebarVisible, toggleSidebar, handleDeleteCl
         </DelButton>
         <SaveButton>
           <img src={ Icon_save } alt="save icon" />
-          Save Changes
+          <p>Save Changes</p>
         </SaveButton>
       </DelSave>
     </HeaderDiv>

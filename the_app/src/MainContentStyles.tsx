@@ -11,9 +11,14 @@ const MainBodyDiv = styled.div<MainStylesProps>`
  width: 100%;
  margin-top: auto;
  position: relative;
- min-height: calc( 100vh - 70px);
+ height: calc( 100vh - 72px);
  text-align: left;
  background-color: ${({ ischecked }) => (ischecked ? '#151619' : '#FFFFFF')};
+ overflow: hidden;
+
+ @media (max-width: 480px) {
+      height:  calc( 100vh - 56px);
+    }
 `;
 
 const MarkdownDiv = styled.div<{ispreview: boolean}>`
@@ -21,8 +26,21 @@ const MarkdownDiv = styled.div<{ispreview: boolean}>`
   vertical-align: top;
   display: ${({ispreview}) => (ispreview ? 'none' : 'inline-block')};
   width: 50%;
-  min-height: calc( 100vh - 70px);
+  min-height: calc( 100vh - 72px);
   margin-right: auto;
+
+  @media (max-width: 480px) {
+      width: 100%;
+      min-height:  calc( 100vh - 56px);
+    }
+
+  button {
+    display: none;
+
+    @media (max-width: 480px) {
+      display: inline;
+    }
+  }
 `;
 
 const TopBarDiv = styled.div<{ischecked: boolean}>`
@@ -52,9 +70,14 @@ const Vertline = styled.div<{ ischecked: boolean, ispreview: boolean}>`
 const PreviewDiv = styled.div<{ispreview: boolean}>`
  text-align: left;
  display: inline-block;
- min-height: calc( 100vh - 70px);
+ min-height: calc( 100vh - 72px);
  vertical-align: top;
  width: ${({ispreview}) => (ispreview ? '100%' : 'calc(50% - 2px)')};
+
+ @media (max-width: 480px) {
+      min-height:  calc( 100vh - 56px);
+    }
+ 
 `;
 
 const PreviewButton = styled.button`

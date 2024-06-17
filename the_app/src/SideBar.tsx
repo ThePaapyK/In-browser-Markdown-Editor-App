@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { SideBarDiv, TitleDiv, NewDocButton, DarkLightDiv, SunImg, MoonImg } from './SideBarStyles';
+import { SideBarDiv, MarkD, TitleP, NewDocButton, DarkLightDiv, SunImg, MoonImg } from './SideBarStyles';
 import Icon_document from './assets/icon-document.svg';
 import Icon_dark from './assets/icon-dark-mode.svg';
 import Icon_light from './assets/icon-light-mode.svg';
+import Markdown from './assets/MARKDOWN.svg';
 
 interface SidebarProps {
   isSidebarVisible: boolean;
@@ -14,9 +15,10 @@ export default function SideBar({ isSidebarVisible, isChecked, handleToggle }: S
  
   return (
     <SideBarDiv isvisible={isSidebarVisible}>
-      <TitleDiv>
-        <p>MY DOCUMENTS</p>
-      </TitleDiv>
+      <MarkD  src={Markdown} alt="Markdown logo" />
+      <TitleP>
+        MY DOCUMENTS
+      </TitleP>
       <NewDocButton>
         <p>+ New Document</p>
       </NewDocButton>

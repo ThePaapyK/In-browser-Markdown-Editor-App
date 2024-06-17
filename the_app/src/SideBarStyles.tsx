@@ -12,20 +12,33 @@ const SideBarDiv = styled.div<{ isvisible: boolean }>`
   background: #1D1F22;
   color:#ffffff;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
+  padding: 27px 24px 27px 24px;
 `;
 
+const MarkD = styled.img`
+  display: none;
+  text-align: left;
+  margin: 2px 0 27px 0;
 
-const TitleDiv = styled.div`
+ @media (max-width: 768px) {
+        display: block;
+    }
+ @media (max-width: 480px) {
+    display: block;
+    
+ }
+`;
+
+const TitleP = styled.p`
   color: #7C8187;
   font-size: 14px;
+  font-family: 'Roboto', sans-serif;
   width: 100%;
   font-weight: 500;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: left;
+  margin: 0 0 27px 0;
 `;
 
 const NewDocButton = styled.button`
@@ -37,6 +50,9 @@ const NewDocButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
   &:hover {
     background: #F39765;
@@ -45,7 +61,7 @@ const NewDocButton = styled.button`
 
 const DarkLightDiv = styled.div`
   align-self: flex-start;
-  margin: auto 0 20px 20px;
+  margin: auto 0 0 0;
   display: flex;
   width: 104px;
   height: 24px;
@@ -115,5 +131,5 @@ const SunImg = styled.img<{ ischeck : boolean }>`
   filter: ${({ ischeck } ) => (ischeck ? 'none' : 'brightness(0) invert(1)')};
 `;
 
-export { SideBarDiv, TitleDiv, NewDocButton, DarkLightDiv, SunImg, MoonImg };
+export { SideBarDiv, MarkD, TitleP, NewDocButton, DarkLightDiv, SunImg, MoonImg };
  

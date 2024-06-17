@@ -10,27 +10,44 @@ const HeaderDiv = styled.div<{ sidebarvisible: boolean }>`
   transition: margin-left 0.3s ease-in-out;
   width: 100%;
   overflow: hidden;
+
+ @media (max-width: 480px) {
+    height: 56px;
+  }
+
 `;
 
 const MenuButton = styled.button`
   background: #35393F;
   border: none;
-  height: 72px;
+  height: inherit;
   width: 72px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  
+  @media (max-width: 480px) {
+    width: 56px;
+  }
 `;
 
 const MarkP = styled.div`
   color: #ffffff;
   margin: 0 24.75px 0 24.75px;
+ 
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const VertLine = styled.div`
   border-left: 1px solid #5A6069;
   height: 40px;
+  
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 const DocumentName = styled.div`
@@ -58,6 +75,10 @@ const Label = styled.label`
   color: #7C8187;
   font-size: 13px;
   font-weight: 300;
+  
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const Input = styled.input`
@@ -73,6 +94,9 @@ const Input = styled.input`
     border-bottom: 2px solid #ccc;
     outline: none;
  }
+ @media (max-width: 480px) {
+    width: 140px;
+  }
 `;
 
 const DelSave = styled.div`
@@ -115,7 +139,19 @@ const SaveButton = styled.button`
   img {
    height: 16px;
    width: 16px;
-  } 
+  }
+
+  @media (max-width: 480px) {
+    width: 40px;
+  }
+
+  p {
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
+
+   
 `;
 
 
