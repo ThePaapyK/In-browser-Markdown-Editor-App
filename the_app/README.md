@@ -1,46 +1,116 @@
-# Getting Started with Create React App
+# In-browser markdown editor solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [In-browser markdown editor challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/inbrowser-markdown-editor-r16TrrQX9).
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Overview
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### What the Editor Does
 
-### `npm test`
+Users should be able to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Create, Read, Update, and Delete markdown documents
+- Name and save documents to be accessed as needed
+- Edit the markdown of a document and see the formatted preview of the content
+- View a full-page preview of the formatted content
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Use localStorage to save the current state in the browser that persists when the browser is refreshed
 
-### `npm run build`
+### Links
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## My process
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Built with
 
-### `npm run eject`
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://reactjs.org/) - JS library
+- [Styled Components](https://styled-components.com/) - For styles
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### What I learned
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This was my first experience using TypeScript. I explored its exciting features and discovered how it differs from JavaScript.
+The main difference is TypeScript's static typing, which catches errors at compile time rather than at runtime, reducing the chances of runtime errors in production.
+This feature significantly enhances code reliability and maintainability.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+It was also my first time using Styled Components. In Styled Components, Styles are scoped to the component, meaning that they do not leak or affect other components.
+This helps avoid common CSS issues like global namespace collisions. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The code snippets below illustrate some Type declaration in TypeScript:
 
-## Learn More
+```js
+// JavaScript example
+let message = "Hello, world!";
+message = 42; // No error, even though `message` was initially a string
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```js
+// TypeScript example
+let message: string = "Hello, world!";
+message = 42; // Error: Type 'number' is not assignable to type 'string'
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The code block below illustrates the use of Styled Components:
+
+```js
+// Import the styled-components library
+import styled from 'styled-components';
+
+// Define a styled button component
+const Button = styled.button<{ primary?: boolean }>`
+  background: ${props => props.primary ? 'blue' : 'gray'};
+  color: white;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid ${props => props.primary ? 'blue' : 'gray'};
+  border-radius: 3px;
+`;
+
+// Usage in a React component
+const App: React.FC = () => (
+  <div>
+    <Button>Normal Button</Button>
+    <Button primary>Primary Button</Button>
+  </div>
+);
+
+export default App;
+```
+
+### Continued development
+
+I hope to refine my skills in building apps of this nature (CRUD apps) in the future, but with more functionalities. I plan to buils them as fullstack projects, employing techniques such as jwt encoding and validation.
+
+### Useful resources
+
+- [React documentation](https://react.dev/learn) - This helped me for revise some concepts such as creation of hooks in react. It also helped me remind myself of certain react syntax.
+- [TypeScript Tutorial](https://youtube.com/playlist?list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&si=vm7xqALO1R3BIT5-) - This is an amazing youtube playlist which helped me understand basic concepts in TypeScript. I'd recommend it to anyone beginning TypeScript
+
+
+## Author
+
+- Website - [Paa Kojo EFfah Annan](https://www.github.com/ThePaapyK)
+- Twitter - [@ThePaapy_K](https://www.twitter.com/ThePaapy_K)
+
+## Acknowledgments
+
+I would like to express my sincere gratitude to Amalitech GmbH for providing me with the opportunity to work on this project as part of their Pre-Selection Training for Prospective National Service Personnel. Additionally, I am deeply thankful to my fellow software engineer friends who were instrumental in helping me debug and improve my code.
+
