@@ -14,7 +14,7 @@ type Documente = {
 
 interface SidebarProps {
   isSidebarVisible: boolean;
-  isChecked: boolean;
+  isDarkMode: boolean;
   handleToggle: () => void;
   toggleSidebar: () => void;
   documents: Documente[];
@@ -23,7 +23,7 @@ interface SidebarProps {
   addDocument: () =>void;
 }
 
-export default function SideBar({ isSidebarVisible, isChecked, handleToggle, toggleSidebar, documents, setSelectedDocIndex, selectedDocIndex, addDocument}: SidebarProps) {
+export default function SideBar({ isSidebarVisible, isDarkMode, handleToggle, toggleSidebar, documents, setSelectedDocIndex, selectedDocIndex, addDocument}: SidebarProps) {
  
   return (
     <SideBarDiv isvisible={isSidebarVisible}>
@@ -46,12 +46,12 @@ export default function SideBar({ isSidebarVisible, isChecked, handleToggle, tog
         ))}
       </ListedDiv>
       <DarkLightDiv>
-       <MoonImg src={ Icon_dark } ischeck={isChecked} alt="dark mode icon" />
+       <MoonImg src={ Icon_dark } ischeck={isDarkMode} alt="dark mode icon" />
        <label className="switch" htmlFor="checkbox" >
-         <input type="checkbox" checked={isChecked} onChange={handleToggle} id="checkbox" />
+         <input type="checkbox" checked={isDarkMode} onChange={handleToggle} id="checkbox" />
          <span className="slider round" />
        </label>
-       <SunImg src={ Icon_light } ischeck={isChecked} alt="light mode icon" />
+       <SunImg src={ Icon_light } ischeck={isDarkMode} alt="light mode icon" />
       </DarkLightDiv>
     </SideBarDiv>
   );

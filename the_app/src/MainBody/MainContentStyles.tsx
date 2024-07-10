@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 interface MainStylesProps {
   sidebarVisible: boolean;
-  ischecked: boolean;
+  isdarkmode: boolean;
 }
 
 const MainBodyDiv = styled.div<MainStylesProps>`
@@ -13,7 +13,7 @@ const MainBodyDiv = styled.div<MainStylesProps>`
  position: relative;
  height: calc( 100vh - 72px);
  text-align: left;
- background-color: ${({ ischecked }) => (ischecked ? '#151619' : '#FFFFFF')};
+ background-color: ${({ isdarkmode }) => (isdarkmode ? '#151619' : '#FFFFFF')};
  overflow: hidden;
  
  @media (min-width: 769px)
@@ -23,11 +23,11 @@ const MainBodyDiv = styled.div<MainStylesProps>`
    }
 
    ::-webkit-scrollbar-track {
-    background: ${({ ischecked }) => (ischecked ? '#1D1F22' : '#FFFFFF')}
+    background: ${({ isdarkmode }) => (isdarkmode ? '#1D1F22' : '#FFFFFF')}
    }
 
    ::-webkit-scrollbar-thumb {
-     background:  ${({ ischecked }) => (ischecked ? '#C1C4CB' : '#7C8187')};
+     background:  ${({ isdarkmode }) => (isdarkmode ? '#C1C4CB' : '#7C8187')};
      border-radius: 20px;
      cursor: pointer;
    }
@@ -38,7 +38,7 @@ const MainBodyDiv = styled.div<MainStylesProps>`
     }
 `;
 
-const MarkdownDiv = styled.div<{ispreview: boolean, ischecked: boolean}>`
+const MarkdownDiv = styled.div<{ispreview: boolean, isdarkmode: boolean}>`
   text-align: left;
   vertical-align: top;
   display: ${({ispreview}) => (ispreview ? 'none' : 'inline-block')};
@@ -69,16 +69,16 @@ const MarkdownDiv = styled.div<{ispreview: boolean, ischecked: boolean}>`
     resize: none;
     font-family: 'Roboto Mono' monospace;
     font-size: 14px;
-    color: ${({ischecked}) => (ischecked ? '#C1C4CB' : '#35393F')};
+    color: ${({isdarkmode}) => (isdarkmode ? '#C1C4CB' : '#35393F')};
     background: transparent;
   }
 `;
 
-const TopBarDiv = styled.div<{ischecked: boolean}>`
+const TopBarDiv = styled.div<{isdarkmode: boolean}>`
     height: 42px;
     width: 100%;
-    background-color: ${({ ischecked }) => (ischecked ? '#1D1F22' : '#F5F5F5')};
-    color: ${({ ischecked }) => (ischecked ? '#C1C4CB' : '#7C8187')};
+    background-color: ${({ isdarkmode }) => (isdarkmode ? '#1D1F22' : '#F5F5F5')};
+    color: ${({ isdarkmode }) => (isdarkmode ? '#C1C4CB' : '#7C8187')};
     display: inline-block;
     padding:13px 0 0 15px;
     overflow: hidden;
@@ -90,15 +90,15 @@ const TopBarDiv = styled.div<{ischecked: boolean}>`
     }
 `;
 
-const Vertline = styled.div<{ ischecked: boolean, ispreview: boolean}>`
+const Vertline = styled.div<{ isdarkmode: boolean, ispreview: boolean}>`
   border: none;
-  border-left: ${({ ischecked }) => (ischecked ? '2px solid #5A6069' : '2px solid #E4E4E4')};
+  border-left: ${({ isdarkmode }) => (isdarkmode ? '2px solid #5A6069' : '2px solid #E4E4E4')};
   display: ${prop => prop.ispreview ? 'none' : 'inline-block'};
   min-height: calc( 100vh - 70px);
   margin-left: auto;
 `;
 
-const PreviewDiv = styled.div<{ispreview: boolean, ischecked: boolean}>`
+const PreviewDiv = styled.div<{ispreview: boolean, isdarkmode: boolean}>`
   text-align: left;
   display: inline-block;
   height: calc( 100vh - 72px);
@@ -126,7 +126,7 @@ const PreviewDiv = styled.div<{ispreview: boolean, ischecked: boolean}>`
     margin: auto;
     font-family: 'Roboto Slab', sans-serif;
     font-size: 14px;
-    color: ${({ischecked}) => (ischecked ? '#C1C4CB' : '#7C8187')};
+    color: ${({isdarkmode}) => (isdarkmode ? '#C1C4CB' : '#7C8187')};
     height: auto;
     padding: 0;
     
@@ -138,7 +138,7 @@ const PreviewDiv = styled.div<{ispreview: boolean, ischecked: boolean}>`
     }
 
     h1, h2, h3, h4, h5 {
-    color: ${({ischecked}) => (ischecked ? '#FFFFFF' : '#35393F')};
+    color: ${({isdarkmode}) => (isdarkmode ? '#FFFFFF' : '#35393F')};
     margin: 24px 0 24px 0;
     line-height: 1.2;
     
@@ -171,11 +171,11 @@ const PreviewDiv = styled.div<{ispreview: boolean, ischecked: boolean}>`
     }
 
     blockquote {
-      background: ${({ischecked}) => (ischecked ? '#2B2D31' : '#F5F5F5')};
+      background: ${({isdarkmode}) => (isdarkmode ? '#2B2D31' : '#F5F5F5')};
       padding: 10px 20px 10px 20px;
       border-left: 4px solid #E46643;
       border-radius: 5px;
-      color: ${({ischecked}) => (ischecked ? '#FFFFFF' : '#35393F')};
+      color: ${({isdarkmode}) => (isdarkmode ? '#FFFFFF' : '#35393F')};
       font-weight: bold;
       width: 100%;
       margin-left: 0;
@@ -185,12 +185,12 @@ const PreviewDiv = styled.div<{ispreview: boolean, ischecked: boolean}>`
       }
     }
     pre {
-      background: ${({ischecked}) => (ischecked ? '#2B2D31' : '#F5F5F5')};
+      background: ${({isdarkmode}) => (isdarkmode ? '#2B2D31' : '#F5F5F5')};
       padding: 24px;
       border-radius: 5px;
     }
     code {
-      color: ${({ischecked}) => (ischecked ? '#FFFFFF' : '#35393F')};
+      color: ${({isdarkmode}) => (isdarkmode ? '#FFFFFF' : '#35393F')};
       font-family: 'Roboto Mono', monospace;
       white-space: pre-wrap;
     }

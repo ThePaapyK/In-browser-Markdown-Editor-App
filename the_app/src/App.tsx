@@ -15,10 +15,10 @@ function App() {
     setIsSidebarVisible(!isSidebarVisible);
   };
 
- const [isChecked, setIsChecked] = useState(false);
+ const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleToggle = () => {
-    setIsChecked(!isChecked);
+    setIsDarkMode(!isDarkMode);
   };
 
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -78,14 +78,14 @@ function App() {
       <div className="App">
         <SideBar isSidebarVisible={isSidebarVisible}
           
-          isChecked={ isChecked } handleToggle={ handleToggle }
+          isDarkMode={ isDarkMode } handleToggle={ handleToggle }
           documents={documents}
           setSelectedDocIndex={setSelectedDocIndex}
           selectedDocIndex={selectedDocIndex}
           addDocument={addDocument}
           toggleSidebar={toggleSidebar}
         />
-        {isDialogVisible && <DialogBox isChecked={isChecked} name={selectedDocIndex !== null ? documents[selectedDocIndex]?.name || '' : ''} deleteDocument={handleDeleteDocument} selectedDocIndex={selectedDocIndex} onClose={handleCloseDialog} />}
+        {isDialogVisible && <DialogBox isDarkMode={isDarkMode} name={selectedDocIndex !== null ? documents[selectedDocIndex]?.name || '' : ''} deleteDocument={handleDeleteDocument} selectedDocIndex={selectedDocIndex} onClose={handleCloseDialog} />}
         <Header isSidebarVisible={isSidebarVisible} 
          toggleSidebar={toggleSidebar}
          handleDeleteClick={handleDeleteClick}
@@ -94,7 +94,7 @@ function App() {
          updateDocName={(selectedDocIndex, updatedName) => updateDocName(selectedDocIndex, updatedName)}
          saveDocument={handleSaveClick}
         />
-        <MainContent isSidebarVisible={ isSidebarVisible } isChecked={ isChecked }
+        <MainContent isSidebarVisible={ isSidebarVisible } isDarkMode={ isDarkMode }
         content={selectedDocIndex !== null ? documents[selectedDocIndex]?.content || '' : ''}
         selectedDocIndex={selectedDocIndex}
         updateDocument={(updatedContent) => updateDocument(updatedContent)}

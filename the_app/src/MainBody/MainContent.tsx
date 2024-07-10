@@ -6,14 +6,14 @@ import Icon_show from '../assets/icon-show-preview.svg';
 
 interface MainProps {
   isSidebarVisible: boolean;
-  isChecked: boolean;
+  isDarkMode: boolean;
   content: string;
   selectedDocIndex: number | null;
   updateDocument: ( content: string) => void;
   renderMarkdown: (content: string) => string | Promise<string>;
 }
 
-export default function MainContent({ isSidebarVisible, isChecked, selectedDocIndex,  content, renderMarkdown, updateDocument } : MainProps) {
+export default function MainContent({ isSidebarVisible, isDarkMode, selectedDocIndex,  content, renderMarkdown, updateDocument } : MainProps) {
 
  const [isPreview, setIsPreview] = useState(false);
 
@@ -22,9 +22,9 @@ export default function MainContent({ isSidebarVisible, isChecked, selectedDocIn
   };
 
   return (
-    <MainBodyDiv sidebarVisible={isSidebarVisible} ischecked={isChecked}>
-      <MarkdownDiv ispreview={isPreview} ischecked={isChecked}>
-        <TopBarDiv ischecked={isChecked}>
+    <MainBodyDiv sidebarVisible={isSidebarVisible} isdarkmode={isDarkMode}>
+      <MarkdownDiv ispreview={isPreview} isdarkmode={isDarkMode}>
+        <TopBarDiv isdarkmode={isDarkMode}>
           <p>MARKDOWN</p>
           <PreviewButton onClick={togglePreview}>
             { isPreview ?
@@ -45,9 +45,9 @@ export default function MainContent({ isSidebarVisible, isChecked, selectedDocIn
           }}
         />
       </MarkdownDiv>
-      <Vertline ischecked={isChecked} ispreview={isPreview} />
-      <PreviewDiv ispreview={isPreview} ischecked={isChecked}>
-        <TopBarDiv ischecked={isChecked}>
+      <Vertline isdarkmode={isDarkMode} ispreview={isPreview} />
+      <PreviewDiv ispreview={isPreview} isdarkmode={isDarkMode}>
+        <TopBarDiv isdarkmode={isDarkMode}>
           <p>PREVIEW</p>
           <PreviewButton onClick={togglePreview}>
             { isPreview ?
