@@ -45,15 +45,25 @@ const HeadingP = styled.p<{ischeck : boolean}>`
   font-size: 20px;
   font-weight: bold;
   color: ${props => props.ischeck ? '#FFFFFF' : '#35393F'};
-  margin: 4px 0 22px 0;
+  margin: 0;
   text-align: left;
 `;
 
-const MessageP = styled.p<{ischeck: boolean}>`
+const MessageP = styled.div<{ischeck: boolean}>`
   font-size: 14px;
   color: ${props => props.ischeck ? '#C1C4CB' : '#7C8187'};
-  margin: 2px 0 22px 0;
+  margin: 24px 0 24px 0;
   text-align: left;
+  height: 55.2px;
+
+  .delName {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+    white-space: nowrap;
+    vertical-align: top;
+  }
 `;
 
 export { Overlay, DialogBox, MessageP, HeadingP };

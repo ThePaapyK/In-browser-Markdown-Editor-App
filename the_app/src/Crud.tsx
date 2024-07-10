@@ -1,0 +1,119 @@
+import { useState, useEffect } from 'react';
+import { marked } from 'marked';
+import moment from 'moment';
+import formatDate from './utils'
+
+const CrudFunctions = () => {
+  type Documente = {
+  createdAt: string;
+  name: string;
+  content: string;
+  };
+
+  const [documents, setDocuments] = useState<Documente[]>([]);
+  const [selectedDocIndex, setSelectedDocIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const initializeData = async () => {
+      const localData = localStorage.getItem('documents');
+      if (!localData) {
+        const response = await fetch('/data.json');
+        const initialData: Documente[] = await response.json();
+        localStorage.setItem('documents', JSON.stringify(initialData));
+        setDocuments(initialData);
+      } else {
+        setDocuments(JSON.parse(localData));
+      }
+
+      const savedSelectedDocIndex = localStorage.getItem('selectedDocIndex');
+      if (savedSelectedDocIndex !== null) {
+        setSelectedDocIndex(parseInt(savedSelectedDocIndex, 10));
+      }
+    };
+    initializeData();
+  }, []);
+
+
+  useEffect(() => {
+    if (selectedDocIndex !== null && selectedDocIndex !== undefined) {
+      localStorage.setItem('selectedDocIndex', selectedDocIndex.toString());
+    } else {
+      localStorage.removeItem('selectedDocIndex');
+    }
+  }, [selectedDocIndex]);
+
+
+  const addDocument = () => {
+    const newDocument = {
+      createdAt: formatDate(new Date()),
+      name: 'untitled-document.md',
+      content: ''
+    };
+    const updatedDocuments = [...documents, newDocument];
+    setDocuments(updatedDocuments);
+    setSelectedDocIndex(updatedDocuments.length - 1);
+    localStorage.setItem('documents', JSON.stringify(updatedDocuments));
+  };
+
+  const updateDocument = (updatedContent: string) => {
+    if (selectedDocIndex === null) return;
+    const updatedDocuments = documents.map((doc, i) => i === selectedDocIndex ? { ...doc, content: updatedContent } : doc);
+
+    setDocuments(updatedDocuments);
+  };
+
+  const updateDocName = (index: number, updatedName: string) => {
+    if (index === null) return;
+
+    const updatedDocs = documents.map((doc, i) => i === index ? { ...doc, name: updatedName } : doc);
+
+    setDocuments(updatedDocs);
+  };
+
+  const saveDocument = (index: number | null, content: string, name: string) => {
+    if (!name.endsWith('.md')) {
+      name += '.md';
+    }
+
+    const updatedDocs = documents.map((doc, i) =>
+      i === index ? { ...doc, name: name, content: content } : doc
+    );
+    setDocuments(updatedDocs);
+    localStorage.setItem('documents', JSON.stringify(updatedDocs));
+  };
+
+  const deleteDocument = (index: number) => {
+    const updatedDocuments = documents.filter((_, i) => i !== index);
+    setDocuments(updatedDocuments);
+    if (updatedDocuments.length === 0) {
+      setSelectedDocIndex(null);
+    }
+    else if (index >= updatedDocuments.length) {
+      setSelectedDocIndex(updatedDocuments.length - 1);
+    } else {
+      setSelectedDocIndex(index);
+    }
+      console.log(index);
+      localStorage.setItem('documents', JSON.stringify(updatedDocuments));
+  };
+
+  function  renderMarkdown(content: string): string | Promise<string> {
+    return marked(content);
+  }
+
+  return {
+    documents,
+    setDocuments,
+    selectedDocIndex,
+    setSelectedDocIndex,
+    addDocument,
+    updateDocument,
+    updateDocName,
+    saveDocument,
+    deleteDocument,
+    renderMarkdown
+  };
+};
+
+export default CrudFunctions;
+

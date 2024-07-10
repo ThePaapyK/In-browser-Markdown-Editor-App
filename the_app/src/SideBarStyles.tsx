@@ -8,13 +8,28 @@ const SideBarDiv = styled.div<{ isvisible: boolean }>`
   width: 250px;
   transition: transform 0.3s ease-in-out;
   transform: ${({ isvisible }) => (isvisible ? 'translateX(0)' : 'translateX(-100%)')};
-  min-height: 100vh;
+  height: 100vh;
   background: #1D1F22;
   color:#ffffff;
   flex-direction: column;
   align-items: flex-start;
   overflow: hidden;
   padding: 27px 24px 27px 24px;
+
+  @media (min-width: 768px) {
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: inherit;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #C1C4CB;
+      border-radius: 20px;
+    }
+  }
 `;
 
 const MarkD = styled.img`
@@ -57,6 +72,52 @@ const NewDocButton = styled.button`
   &:hover {
     background: #F39765;
   };
+`;
+
+const ListedDiv = styled.div`
+  height: calc(100vh - 210px);
+  width: 100%;
+  overflow-y: auto;
+  margin-top: 24px;
+`;
+const ListedDocument = styled.div`
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 36px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  max-width: 100%;
+  
+  img {
+    margin-right: 16.29px;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .name {
+    font-size: 15px;
+    display: block;
+    color: #FFFFFF;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 170px;
+    text-overflow: ellipsis;
+  }
+  .date {
+    font-size: 13px;
+    font-weight: 300;
+    color: #7C8187;
+    margin: 0;
+  }
 `;
 
 const DarkLightDiv = styled.div`
@@ -131,5 +192,5 @@ const SunImg = styled.img<{ ischeck : boolean }>`
   filter: ${({ ischeck } ) => (ischeck ? 'none' : 'brightness(0) invert(1)')};
 `;
 
-export { SideBarDiv, MarkD, TitleP, NewDocButton, DarkLightDiv, SunImg, MoonImg };
+export { SideBarDiv, MarkD, TitleP, NewDocButton, ListedDiv, ListedDocument, DarkLightDiv, SunImg, MoonImg };
  

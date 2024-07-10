@@ -6,9 +6,10 @@ import Header from './Header';
 import SideBar from './SideBar';
 import MainContent from './MainContent';
 import DialogBox from './DialogBox';
+import CrudFunctions from './Crud';
 
 function App() {
-   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarVisible(!isSidebarVisible);
@@ -30,17 +31,75 @@ function App() {
     setIsDialogVisible(false);
   };
 
+  const {
+    selectedDocIndex,
+    setSelectedDocIndex,
+    addDocument,
+    documents,
+    setDocuments,
+    updateDocument,
+    updateDocName,
+    saveDocument,
+    deleteDocument,
+    renderMarkdown,
+    
+  } = CrudFunctions();
+
+  type Documente = {
+    createdAt: string;
+    name: string;
+    content: string;
+  };
+
+  const handleDeleteDocument = () => {
+    if (selectedDocIndex === null) {
+      console.error("No document selected to delete");
+      return;
+    }
+    deleteDocument(selectedDocIndex);
+  };
+
+  const handleSaveClick = () => {
+   if (selectedDocIndex === null) {
+     addDocument();
+     return;
+   }
+   const currentDocument = documents[selectedDocIndex];
+   if (!currentDocument) {
+     console.error('Selected document does not exist.');
+     return;
+   }
+   saveDocument(selectedDocIndex, currentDocument.content, currentDocument.name)
+  };
+
   return (
     <>
       <GlobalStyles />
       <div className="App">
         <SideBar isSidebarVisible={isSidebarVisible}
-          isChecked={ isChecked } handleToggle={ handleToggle }  />
-        {isDialogVisible && <DialogBox isChecked={isChecked} onClose={handleCloseDialog} />}
+          
+          isChecked={ isChecked } handleToggle={ handleToggle }
+          documents={documents}
+          setSelectedDocIndex={setSelectedDocIndex}
+          selectedDocIndex={selectedDocIndex}
+          addDocument={addDocument}
+          toggleSidebar={toggleSidebar}
+        />
+        {isDialogVisible && <DialogBox isChecked={isChecked} name={selectedDocIndex !== null ? documents[selectedDocIndex]?.name || '' : ''} deleteDocument={handleDeleteDocument} selectedDocIndex={selectedDocIndex} onClose={handleCloseDialog} />}
         <Header isSidebarVisible={isSidebarVisible} 
          toggleSidebar={toggleSidebar}
-         handleDeleteClick={handleDeleteClick} />
-        <MainContent isSidebarVisible={ isSidebarVisible } isChecked={ isChecked } />
+         handleDeleteClick={handleDeleteClick}
+         name={selectedDocIndex !== null ? documents[selectedDocIndex]?.name || '' : ''}
+         selectedDocIndex={selectedDocIndex}
+         updateDocName={(selectedDocIndex, updatedName) => updateDocName(selectedDocIndex, updatedName)}
+         saveDocument={handleSaveClick}
+        />
+        <MainContent isSidebarVisible={ isSidebarVisible } isChecked={ isChecked }
+        content={selectedDocIndex !== null ? documents[selectedDocIndex]?.content || '' : ''}
+        selectedDocIndex={selectedDocIndex}
+        updateDocument={(updatedContent) => updateDocument(updatedContent)}
+        renderMarkdown = {renderMarkdown}
+      />
       </div>
     </>
   );

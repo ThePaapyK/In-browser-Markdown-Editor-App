@@ -45,7 +45,7 @@ const VertLine = styled.div`
   border-left: 1px solid #5A6069;
   height: 40px;
   
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
@@ -75,7 +75,7 @@ const Label = styled.label`
   color: #7C8187;
   font-size: 13px;
   font-weight: 300;
-  
+  #d73953
   @media (max-width: 480px) {
     display: none;
   }
