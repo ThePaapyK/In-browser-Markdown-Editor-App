@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { marked } from 'marked';
 import { MainBodyDiv, MarkdownDiv, PreviewDiv, TopBarDiv, Vertline, PreviewButton } from './MainContentStyles';
-import Icon_hide from './assets/icon-hide-preview.svg';
-import Icon_show from './assets/icon-show-preview.svg';
+import Icon_hide from '../assets/icon-hide-preview.svg';
+import Icon_show from '../assets/icon-show-preview.svg';
 
 interface MainProps {
   isSidebarVisible: boolean;

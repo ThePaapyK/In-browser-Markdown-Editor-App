@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { GlobalStyles } from './GlobalStyles';
-import Header from './Header';
-import SideBar from './SideBar';
-import MainContent from './MainContent';
-import DialogBox from './DialogBox';
-import CrudFunctions from './Crud';
+import Header from './Header/Header';
+import SideBar from './SideBar/SideBar';
+import MainContent from './MainBody/MainContent';
+import DialogBox from './DialogBox/DialogBox';
+import CrudFunctions from './Utils/Crud';
 
 function App() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);

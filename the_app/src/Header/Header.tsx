@@ -1,10 +1,10 @@
 import React from 'react';
-import Icon_menu from './assets/icon-menu.svg';
-import Icon_document from './assets/icon-document.svg';
-import Icon_delete from './assets/icon-delete.svg';
-import Icon_save from './assets/icon-save.svg';
-import Icon_close from './assets/icon-close.svg';
-import Markdown from './assets/MARKDOWN.svg';
+import Icon_menu from '../assets/icon-menu.svg';
+import Icon_document from '../assets/icon-document.svg';
+import Icon_delete from '../assets/icon-delete.svg';
+import Icon_save from '../assets/icon-save.svg';
+import Icon_close from '../assets/icon-close.svg';
+import Markdown from '../assets/MARKDOWN.svg';
 import { HeaderDiv, MenuButton, MarkP, VertLine, DocumentName, DocNForm, Label, Input, DelSave, SaveButton, DelButton } from './HeaderStyles';
 
 

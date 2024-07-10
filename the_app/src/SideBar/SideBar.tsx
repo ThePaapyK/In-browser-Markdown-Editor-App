@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { SideBarDiv, MarkD, TitleP, NewDocButton, ListedDiv, ListedDocument, DarkLightDiv, SunImg, MoonImg } from './SideBarStyles';
-import Icon_document from './assets/icon-document.svg';
-import Icon_dark from './assets/icon-dark-mode.svg';
-import Icon_light from './assets/icon-light-mode.svg';
-import Markdown from './assets/MARKDOWN.svg';
+import Icon_document from '../assets/icon-document.svg';
+import Icon_dark from '../assets/icon-dark-mode.svg';
+import Icon_light from '../assets/icon-light-mode.svg';
+import Markdown from '../assets/MARKDOWN.svg';
 
 
 type Documente = {
