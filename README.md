@@ -1,12 +1,11 @@
-# Frontend Mentor - In-browser markdown editor solution
+# In-browser markdown editor solution
 
-This is a solution to the [In-browser markdown editor challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/inbrowser-markdown-editor-r16TrrQX9). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [In-browser markdown editor challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/inbrowser-markdown-editor-r16TrrQX9).
 
 ## Table of contents
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -33,18 +32,6 @@ Users should be able to:
 - **Bonus**: If you're building a purely front-end project, use localStorage to save the current state in the browser that persists when the browser is refreshed
 - **Bonus**: Build this project as a full-stack application
 
-### Screenshot
-
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
-
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
@@ -54,64 +41,77 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
+- [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
 - [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+This was my first experience using TypeScript. I explored its exciting features and discovered how it differs from JavaScript.
+The main difference is TypeScript's static typing, which catches errors at compile time rather than at runtime, reducing the chances of runtime errors in production.
+This feature significantly enhances code reliability and maintainability.
 
-To see how you can add code snippets, see below:
+It was also my first time using Styled Components. In Styled Components, Styles are scoped to the component, meaning that they do not leak or affect other components.
+This helps avoid common CSS issues like global namespace collisions. 
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+The code snippets below illustrate some Type declaration in TypeScript:
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+// JavaScript example
+let message = "Hello, world!";
+message = 42; // No error, even though `message` was initially a string
+```
+
+```js
+// TypeScript example
+let message: string = "Hello, world!";
+message = 42; // Error: Type 'number' is not assignable to type 'string'
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+The code block below illustrates the use of Styled Components:
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+```js
+// Import the styled-components library
+import styled from 'styled-components';
+
+// Define a styled button component
+const Button = styled.button<{ primary?: boolean }>`
+  background: ${props => props.primary ? 'blue' : 'gray'};
+  color: white;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid ${props => props.primary ? 'blue' : 'gray'};
+  border-radius: 3px;
+`;
+
+// Usage in a React component
+const App: React.FC = () => (
+  <div>
+    <Button>Normal Button</Button>
+    <Button primary>Primary Button</Button>
+  </div>
+);
+
+export default App;
+```
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I hope to refine my skills in building apps of this nature (CRUD apps) in the future, but with more functionalities. I plan to buils them as fullstack projects, employing techniques such as jwt encoding and validation.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [React documentation](https://react.dev/learn) - This helped me for revise some concepts such as creation of hooks in react. It also helped me remind myself of certain react syntax.
+- [TypeScript Tutorial](https://youtube.com/playlist?list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&si=vm7xqALO1R3BIT5-) - This is an amazing youtube playlist which helped me understand basic concepts in TypeScript. I'd recommend it to anyone beginning TypeScript
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
-- Website - [Paa Kojo EFfah Annan](https://www.fobistems.tech)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Website - [Paa Kojo EFfah Annan](https://www.github.com/ThePaapyK)
 - Twitter - [@ThePaapy_K](https://www.twitter.com/ThePaapy_K)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+I would like to express my sincere gratitude to Amalitech GmbH for providing me with the opportunity to work on this project as part of their Pre-Selection Training for Prospective National Service Personnel. Additionally, I am deeply thankful to my fellow software engineer friends who were instrumental in helping me debug and improve my code.
