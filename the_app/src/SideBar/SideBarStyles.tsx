@@ -8,7 +8,7 @@ const SideBarDiv = styled.div<{ isvisible: boolean }>`
   width: 250px;
   transition: transform 0.3s ease-in-out;
   transform: ${({ isvisible }) => (isvisible ? 'translateX(0)' : 'translateX(-100%)')};
-  height: 100vh;
+  height: 100svh;
   background: #1D1F22;
   color:#ffffff;
   flex-direction: column;
@@ -75,7 +75,7 @@ const NewDocButton = styled.button`
 `;
 
 const ListedDiv = styled.div`
-  height: calc(100vh - 210px);
+  height: calc(100svh - 210px);
   width: 100%;
   overflow-y: auto;
   margin-top: 24px;
