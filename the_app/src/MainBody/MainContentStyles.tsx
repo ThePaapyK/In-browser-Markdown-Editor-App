@@ -19,7 +19,7 @@ const MainBodyDiv = styled.div<MainStylesProps>`
  @media (min-width: 769px)
  {
    ::-webkit-scrollbar {
-    width: 8.5px;
+    width: 8px;
    }
 
    ::-webkit-scrollbar-track {
@@ -67,6 +67,7 @@ const MarkdownDiv = styled.div<{ispreview: boolean, isdarkmode: boolean}>`
     line-height: 24px;
     outline: none;
     resize: none;
+    overflow: auto;
     font-family: 'Roboto Mono' monospace;
     font-size: 14px;
     color: ${({isdarkmode}) => (isdarkmode ? '#C1C4CB' : '#35393F')};
@@ -107,9 +108,9 @@ const PreviewDiv = styled.div<{ispreview: boolean, isdarkmode: boolean}>`
   width: ${({ispreview}) => (ispreview ? '100%' : 'calc(50% - 2px)')};
 
   .preview {
-    width: 100%;
+    width: calc(100%);
     height: calc(100vh - 114px);
-    overflow-Y: auto;
+    overflow: auto;
     margin: 0;
     padding: 0 24px 48px 24px;
     
@@ -117,9 +118,6 @@ const PreviewDiv = styled.div<{ispreview: boolean, isdarkmode: boolean}>`
      padding: 0 16px 16px 16px;
     }
   }
-/* .preview::-webkit-scrollbar {
-    display: none;
-  }*/
 
   .content {
     max-width: 672px;
@@ -167,7 +165,7 @@ const PreviewDiv = styled.div<{ispreview: boolean, isdarkmode: boolean}>`
     }
     
     a {
-       color: #35393F;
+       color: ${({isdarkmode}) => (isdarkmode ? '#FFFFFF' : '#35393F')};
     }
 
     blockquote {

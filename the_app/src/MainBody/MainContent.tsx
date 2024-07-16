@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { marked } from 'marked';
 import { MainBodyDiv, MarkdownDiv, PreviewDiv, TopBarDiv, Vertline, PreviewButton } from './MainContentStyles';
 import Icon_hide from '../assets/icon-hide-preview.svg';
 import Icon_show from '../assets/icon-show-preview.svg';
@@ -11,9 +10,10 @@ interface MainProps {
   selectedDocIndex: number | null;
   updateDocument: ( content: string) => void;
   renderMarkdown: (content: string) => string | Promise<string>;
+  markdownTextareaRef: React.RefObject<HTMLTextAreaElement>;
 }
 
-export default function MainContent({ isSidebarVisible, isDarkMode, selectedDocIndex,  content, renderMarkdown, updateDocument } : MainProps) {
+export default function MainContent({ isSidebarVisible, isDarkMode, selectedDocIndex,  content, renderMarkdown, updateDocument, markdownTextareaRef } : MainProps) {
 
  const [isPreview, setIsPreview] = useState(false);
 
@@ -35,6 +35,7 @@ export default function MainContent({ isSidebarVisible, isDarkMode, selectedDocI
           </PreviewButton>
         </TopBarDiv>
         <textarea
+          ref={markdownTextareaRef}
           value={content}
           onChange={(e) => {
             if (selectedDocIndex !== null) {

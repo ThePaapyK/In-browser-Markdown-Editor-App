@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SideBarDiv, MarkD, TitleP, NewDocButton, ListedDiv, ListedDocument, DarkLightDiv, SunImg, MoonImg } from './SideBarStyles';
 import Icon_document from '../assets/icon-document.svg';
 import Icon_dark from '../assets/icon-dark-mode.svg';
@@ -37,7 +37,7 @@ export default function SideBar({ isSidebarVisible, isDarkMode, handleToggle, to
       <ListedDiv>
         {documents.map((doc, index) => (
           <ListedDocument key={index} onClick={() => {setSelectedDocIndex(index); toggleSidebar();}}>
-            <img src={ Icon_document } />
+            <img src={ Icon_document } alt="document icon" />
             <div className="details">
               <p className="date">{doc.createdAt}</p>
               <div className="name">{doc.name}</div>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { GlobalStyles } from './GlobalStyles';
 import Header from './Header/Header';
@@ -15,12 +14,20 @@ function App() {
     setIsSidebarVisible(!isSidebarVisible);
   };
 
- const [isDarkMode, setIsDarkMode] = useState(false);
+ const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem('isDarkMode');
+    return savedMode !== null ? JSON.parse(savedMode) : false;
+  });
 
   const handleToggle = () => {
-    setIsDarkMode(!isDarkMode);
+    setIsDarkMode((prevMode : boolean) => !prevMode);
   };
 
+useEffect(() => {
+    localStorage.setItem('isDarkMode', isDarkMode.toString());
+  }, [isDarkMode]);
+
+ 
   const [isDialogVisible, setIsDialogVisible] = useState(false);
 
   const handleDeleteClick = () => {
@@ -42,14 +49,9 @@ function App() {
     saveDocument,
     deleteDocument,
     renderMarkdown,
-    
+    handleKeyDown,
+    markdownTextareaRef 
   } = CrudFunctions();
-
-  type Documente = {
-    createdAt: string;
-    name: string;
-    content: string;
-  };
 
   const handleDeleteDocument = () => {
     if (selectedDocIndex === null) {
@@ -93,12 +95,14 @@ function App() {
          selectedDocIndex={selectedDocIndex}
          updateDocName={(selectedDocIndex, updatedName) => updateDocName(selectedDocIndex, updatedName)}
          saveDocument={handleSaveClick}
+         handleKeyDown={handleKeyDown}
         />
         <MainContent isSidebarVisible={ isSidebarVisible } isDarkMode={ isDarkMode }
         content={selectedDocIndex !== null ? documents[selectedDocIndex]?.content || '' : ''}
         selectedDocIndex={selectedDocIndex}
         updateDocument={(updatedContent) => updateDocument(updatedContent)}
         renderMarkdown = {renderMarkdown}
+        markdownTextareaRef={markdownTextareaRef}
       />
       </div>
     </>

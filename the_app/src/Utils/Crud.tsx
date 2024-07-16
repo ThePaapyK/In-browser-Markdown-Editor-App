@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { marked } from 'marked';
-import moment from 'moment';
 import formatDate from './utils'
 
 const CrudFunctions = () => {
@@ -11,7 +10,8 @@ const CrudFunctions = () => {
   };
 
   const [documents, setDocuments] = useState<Documente[]>([]);
-  const [selectedDocIndex, setSelectedDocIndex] = useState<number | null>(null);
+  const [selectedDocIndex, setSelectedDocIndex] = useState<number | null>(1);
+  const markdownTextareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     const initializeData = async () => {
@@ -71,12 +71,25 @@ const CrudFunctions = () => {
   };
 
   const saveDocument = (index: number | null, content: string, name: string) => {
+    if (name === "") {
+      name = "untitled-document.md";
+    }
     if (!name.endsWith('.md')) {
       name += '.md';
     }
+    
+    const baseName = name.replace(/(\d+)?.md$/, '');
+    let uniqueName = name;
+    let counter = 1;
+
+   // eslint-disable-next-line
+    while (documents.some((doc, i) => i !== index && doc.name === uniqueName)) {
+      uniqueName = `${baseName}${counter}.md`;
+      counter++;
+    }
 
     const updatedDocs = documents.map((doc, i) =>
-      i === index ? { ...doc, name: name, content: content } : doc
+      i === index ? { ...doc, name: uniqueName, content: content } : doc
     );
     setDocuments(updatedDocs);
     localStorage.setItem('documents', JSON.stringify(updatedDocs));
@@ -101,6 +114,13 @@ const CrudFunctions = () => {
     return marked(content);
   }
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Prevent form submission
+      markdownTextareaRef.current?.focus(); // Focus the textarea
+    }
+  };
+
   return {
     documents,
     setDocuments,
@@ -111,7 +131,9 @@ const CrudFunctions = () => {
     updateDocName,
     saveDocument,
     deleteDocument,
-    renderMarkdown
+    renderMarkdown,
+    handleKeyDown,
+    markdownTextareaRef
   };
 };
 

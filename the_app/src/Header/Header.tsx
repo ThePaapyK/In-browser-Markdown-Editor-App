@@ -16,9 +16,14 @@ interface HeaderProps {
   saveDocument: () => void;
   updateDocName: (index: number, updatedName: string) => void;
   selectedDocIndex: number | null;
+  handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-export default function Header({ isSidebarVisible, toggleSidebar, handleDeleteClick, name, updateDocName, selectedDocIndex,  saveDocument }: HeaderProps) {
+const handleFormSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+  };
+
+export default function Header({ isSidebarVisible, toggleSidebar, handleDeleteClick, name, updateDocName, selectedDocIndex,  saveDocument, handleKeyDown }: HeaderProps) {
   return (
     <HeaderDiv sidebarvisible={isSidebarVisible}>
       <MenuButton onClick={toggleSidebar}>
@@ -28,11 +33,11 @@ export default function Header({ isSidebarVisible, toggleSidebar, handleDeleteCl
           <img src={ Icon_menu } alt="close icon" />
         }
       </MenuButton>
-      <MarkP><img src={ Markdown } /></MarkP>
+      <MarkP><img src={ Markdown } alt="Markdown Logo"/></MarkP>
       <VertLine />
       <DocumentName>
         <img src={ Icon_document } alt="document icon" />
-        <DocNForm>
+        <DocNForm onSubmit={handleFormSubmit}>
           <Label htmlFor="docName">Document Name</Label>
           <Input
             id="docName"
@@ -45,6 +50,7 @@ export default function Header({ isSidebarVisible, toggleSidebar, handleDeleteCl
                 alert("add a new document first");
               }
           }}
+          onKeyDown={handleKeyDown}
           />
         </DocNForm>
       </DocumentName>
