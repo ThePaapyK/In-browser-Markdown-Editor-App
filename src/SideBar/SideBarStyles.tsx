@@ -8,7 +8,7 @@ const SideBarDiv = styled.div<{ isvisible: boolean }>`
   width: 250px;
   transition: transform 0.3s ease-in-out;
   transform: ${({ isvisible }) => (isvisible ? 'translateX(0)' : 'translateX(-100%)')};
-  height: 100svh;
+  height: 100dvh;
   background: #1D1F22;
   color:#ffffff;
   flex-direction: column;
@@ -16,7 +16,7 @@ const SideBarDiv = styled.div<{ isvisible: boolean }>`
   overflow: hidden;
   padding: 27px 24px 27px 24px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1025px) {
 
     ::-webkit-scrollbar {
       width: 5px;
@@ -37,7 +37,7 @@ const MarkD = styled.img`
   text-align: left;
   margin: 2px 0 27px 0;
 
- @media (max-width: 768px) {
+ @media (max-width: 1024px) {
         display: block;
     }
  @media (max-width: 480px) {
@@ -75,7 +75,7 @@ const NewDocButton = styled.button`
 `;
 
 const ListedDiv = styled.div`
-  height: calc(100svh - 210px);
+  height: calc(100dvh - 210px);
   width: 100%;
   overflow-y: auto;
   margin-top: 24px;

@@ -36,7 +36,7 @@ const MarkP = styled.div`
   color: #ffffff;
   margin: 0 24.75px 0 24.75px;
  
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `;

@@ -11,12 +11,12 @@ const MainBodyDiv = styled.div<MainStylesProps>`
  width: 100%;
  margin-top: auto;
  position: relative;
- height: calc( 100svh - 72px);
+ height: calc( 100dvh - 72px);
  text-align: left;
  background-color: ${({ isdarkmode }) => (isdarkmode ? '#151619' : '#FFFFFF')};
  overflow: hidden;
  
- @media (min-width: 769px)
+ @media (min-width: 1025px)
  {
    ::-webkit-scrollbar {
     width: 8px;
@@ -34,7 +34,7 @@ const MainBodyDiv = styled.div<MainStylesProps>`
 }
 
  @media (max-width: 480px) {
-      height:  calc( 100svh - 56px);
+      height:  calc( 100dvh - 56px);
     }
 `;
 
@@ -43,12 +43,12 @@ const MarkdownDiv = styled.div<{ispreview: boolean, isdarkmode: boolean}>`
   vertical-align: top;
   display: ${({ispreview}) => (ispreview ? 'none' : 'inline-block')};
   width: 50%;
-  height: calc( 100svh - 72px);
+  height: calc( 100dvh - 72px);
   margin-right: auto;
 
   @media (max-width: 480px) {
       width: 100%;
-      min-height:  calc( 100svh - 56px);
+      min-height:  calc( 100dvh - 56px);
     }
 
   button {
@@ -61,7 +61,7 @@ const MarkdownDiv = styled.div<{ispreview: boolean, isdarkmode: boolean}>`
   
   textarea {
     width: 100%;
-    height: calc(100svh - 114px);
+    height: calc(100dvh - 114px);
     border: none;
     padding: 16px;
     line-height: 24px;
@@ -95,21 +95,21 @@ const Vertline = styled.div<{ isdarkmode: boolean, ispreview: boolean}>`
   border: none;
   border-left: ${({ isdarkmode }) => (isdarkmode ? '2px solid #5A6069' : '2px solid #E4E4E4')};
   display: ${prop => prop.ispreview ? 'none' : 'inline-block'};
-  height: calc( 100svh - 70px);
+  height: calc( 100dvh - 70px);
   margin-left: auto;
 `;
 
 const PreviewDiv = styled.div<{ispreview: boolean, isdarkmode: boolean}>`
   text-align: left;
   display: inline-block;
-  height: calc( 100svh - 72px);
+  height: calc( 100dvh - 72px);
   vertical-align: top;
   line-height: 24px;
   width: ${({ispreview}) => (ispreview ? '100%' : 'calc(50% - 2px)')};
 
   .preview {
     width: calc(100%);
-    height: calc(100svh - 114px);
+    height: calc(100dvh - 114px);
     overflow: auto;
     margin: 0;
     padding: 0 24px 48px 24px;
@@ -195,7 +195,7 @@ const PreviewDiv = styled.div<{ispreview: boolean, isdarkmode: boolean}>`
   }
 
  @media (max-width: 480px) {
-      height:  calc( 100svh - 56px);
+      height:  calc( 100dvh - 56px);
     }
  
 `;
