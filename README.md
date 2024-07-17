@@ -1,11 +1,11 @@
 # In-browser markdown editor solution
 
-This is a solution to the [In-browser markdown editor challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/inbrowser-markdown-editor-r16TrrQX9).
+This is a solution to the [In-browser markdown editor challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/inbrowser-markdown-editor-r16TrrQX9). I did this project as part of Amalitech GmbH's Pre National Service Personnel Training.
 
 ## Table of contents
 
 - [Overview](#overview)
-  - [The challenge](#the-challenge)
+  - [What the Editor Does](#what-the-editor-does)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -113,3 +113,4 @@ I hope to refine my skills in building apps of this nature (CRUD apps) in the fu
 ## Acknowledgments
 
 I would like to express my sincere gratitude to Amalitech GmbH for providing me with the opportunity to work on this project as part of their Pre-Selection Training for Prospective National Service Personnel. Additionally, I am deeply thankful to my fellow software engineer friends who were instrumental in helping me debug and improve my code.
+
