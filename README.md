@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [My solution](https://github.com/ThePaapyK/In-browser-Markdown-Editor-App)
+- Live Site URL: [MARKDOWN](https://annan-markdown-editor-app.vercel.app/)
 
 ## My process
 
